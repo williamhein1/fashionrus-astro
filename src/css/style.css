@@ -1,0 +1,327 @@
+@font-face {
+  font-family: "WorkSans-ExtraBold";
+  src: url("../fonts/Work_Sans/static/WorkSans-ExtraBold.ttf");
+}
+
+@font-face {
+  font-family: "WorkSans-Bold";
+  src: url("../fonts/Work_Sans/static/WorkSans-Bold.ttf");
+}
+
+@font-face {
+  font-family: "WorkSans-ExtraLight";
+  src: url("../fonts/Work_Sans/static/WorkSans-ExtraLight.ttf");
+}
+
+@font-face {
+  font-family: "WorkSans-Light";
+  src: url("../fonts/Work_Sans/static/WorkSans-Light.ttf");
+}
+
+html {
+  --background_color: red;
+  --main_color: white;
+  --h1_font: "WorkSans-Bold";
+  --li_font: "WorkSans-ExtraLight";
+  --h2_font: "WorkSans-Bold";
+  --h3_font: "WorkSans-Bold";
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background_color);
+  color: white;
+  /* border: 5rem solid white; Add a 30px white border */
+  margin: 0; /* Remove default margin */
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  box-sizing: border-box; /* Ensure padding and border are included in the element's dimensions */
+  min-height: 100vh; /* Ensure the body covers the entire viewport */
+}
+
+footer,
+main,
+header {
+  margin: 1rem;
+}
+
+header {
+  margin-bottom: 3rem;
+  margin-top: 0;
+}
+
+.header_menu,
+h1 {
+  position: relative;
+  z-index: 2000;
+  font-size: 15pt;
+}
+
+h1 {
+  font-family: var(--h1_font);
+  font-size: 12.8vw;
+  margin: 0 auto;
+  word-wrap: break-word; /* Break long words if necessary */
+  overflow-wrap: break-word;
+}
+
+p {
+  margin: 0;
+}
+
+h2 {
+  font-family: var(--h2_font);
+  font-size: 10pt;
+}
+
+#produktliste_titel {
+  font-size: 20pt;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-family: var(--h3_font);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 14pt;
+}
+
+.h3_product {
+  margin: 0;
+}
+
+.read_more {
+  text-decoration: underline;
+}
+
+.product_list {
+  font-family: var(--li_font);
+  font-size: 12pt;
+}
+
+ul {
+  list-style-type: none;
+  font-family: var(--li_font);
+  font-size: 27pt;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  width: 100%;
+  max-height: 100%;
+}
+
+.sold_out img {
+  opacity: 50%;
+}
+
+.sale_discount {
+  background-color: white;
+  color: red;
+  padding: 0.1rem;
+}
+
+.menu-checkbox {
+  display: none;
+}
+
+/* The word that toggles the menu */
+.menu-trigger {
+  z-index: 100;
+  cursor: pointer;
+}
+
+.menu-trigger:hover {
+  text-decoration: underline;
+}
+
+/* Fullscreen menu (hidden by default) */
+.fullscreen-menu {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh); /* Take up remaining space */
+  background: red;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-right: 1rem;
+  transform: scaleY(0); /* Start collapsed */
+  transform-origin: top;
+  transition: transform 0.4s ease-in-out;
+  box-sizing: border-box;
+  z-index: 20;
+}
+
+/* Show menu when checkbox is checked */
+.menu-checkbox:checked ~ .fullscreen-menu {
+  transform: scaleY(1);
+}
+
+/* Disable scrolling when menu is open */
+body:has(.menu-checkbox:checked) {
+  overflow: hidden;
+}
+
+.fullscreen-menu ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.fullscreen-menu ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 25pt;
+  transition: color 0s;
+}
+
+.fullscreen-menu ul li a:hover {
+  text-decoration: underline;
+}
+
+.product_container {
+  font-family: var(--li_font);
+}
+
+.buy_button,
+.size-menu {
+  background-color: white;
+  color: red;
+  padding: 0.2rem;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+}
+
+.h2_front_page {
+  margin: 0;
+}
+
+.logo:hover {
+  text-decoration: none;
+}
+
+.product_info {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+footer {
+  font-family: var(--li_font);
+  margin-top: 10rem;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-family: var(--li_font);
+  gap: 1.5rem;
+}
+
+h4 {
+  font-family: var(--li_font);
+  font-size: 12pt;
+}
+
+.filters label {
+  font-family: var(--li_font);
+  color: white;
+}
+
+.filters input[type="checkbox"] {
+  cursor: pointer;
+  accent-color: red;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  margin-top: 0.2rem;
+  background-color: white;
+  border-radius: 0px;
+}
+
+.filters input[type="number"] {
+  font-family: var(--li_font);
+  color: red;
+  border: none;
+  margin: 0;
+  margin-top: 0.2rem;
+  padding: 0.2rem;
+  width: 90px;
+}
+
+.footer_logo {
+  font-family: var(--h1_font);
+  font-size: 12.8vw;
+  margin: 0 auto;
+  word-wrap: break-word; /* Break long words if necessary */
+  overflow-wrap: break-word;
+}
+
+@media (width > 700px) {
+  h1 {
+    font-size: 14vw;
+    width: 100%;
+  }
+
+  .fullscreen-menu {
+    justify-content: flex-start;
+  }
+
+  .header_menu {
+    font-size: 20pt;
+  }
+
+  .fullscreen-menu ul {
+    margin-top: 30%;
+  }
+
+  .h2_front_page {
+    margin: 0.5rem;
+  }
+
+  .h3_product {
+    font-size: 20pt;
+  }
+
+  header {
+    margin-bottom: 3rem;
+  }
+
+  .footer_logo {
+    font-size: 14vw;
+    width: 100%;
+  }
+
+  .product_container {
+    margin-top: 8rem;
+  }
+
+  .product_img {
+    justify-self: end;
+  }
+
+  .product_container img {
+    width: auto;
+    object-fit: contain;
+    max-height: 500px;
+  }
+
+  footer {
+    margin-top: 8rem;
+  }
+}
