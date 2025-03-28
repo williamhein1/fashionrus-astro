@@ -3,19 +3,20 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
+// Fetch all products at build time to generate static paths
 export async function getStaticPaths() {
   const data = await fetch("https://kea-alt-del.dk/t7/api/products").then((response) => response.json());
 
-  return data.map((product) => {
-    return {
-      params: { id: product.id },
-      props: { product },
-    };
-  });
+  return data.map((product) => ({
+    params: { id: product.id.toString() }, // Ensure ID is a string
+  }));
 }
 
+// Get the product ID from the route
 const { id } = Astro.params;
-const { product } = Astro.props;
+
+// Fetch the individual product based on ID
+const product = await fetch(`https://kea-alt-del.dk/t7/api/products/${id}`).then((response) => response.json());
 ---
 
 <Layout>
@@ -23,14 +24,12 @@ const { product } = Astro.props;
   <main>
     <section class="product_container">
       <div class="product_img">
-        <img src=`https://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp` alt=`{product.productdisplayname}` />
+        <img src={`https://kea-alt-del.dk/t7/images/webp/640/${product.id}.webp`} alt={product.productdisplayname} />
       </div>
 
       <div class="product_details_container">
         <h3 class="h3_product">{product.productdisplayname}</h3>
-
         <div>{product.price} DKK</div>
-
         <div>{product.basecolour}</div>
 
         <div class="size-container">
@@ -39,7 +38,6 @@ const { product } = Astro.props;
         </div>
 
         <div class="buy_button">ADD TO BASKET</div>
-
         <div>ESTIMATED DELIVERY TIME: 1-2 BUSINESS DAYS</div>
       </div>
     </section>
