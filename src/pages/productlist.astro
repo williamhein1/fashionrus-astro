@@ -2,19 +2,23 @@
 import Layout from "../layouts/Layout.astro";
 import ProductCard from "../components/ProductCard.astro";
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 const data = await fetch("https://kea-alt-del.dk/t7/api/products").then((res) => res.json());
-console.log(data);
+//console.log(data);
 ---
 
 <Layout>
   <Header />
-  <h2 id="produktliste_titel">Apparel</h2>
-  <h3>FILTERS</h3>
-  <div class="filters">
-    <label>ITEMS ON SALE: <input type="checkbox" id="saleFilter" /> </label>
-    <label>MAX PRICE: <input type="number" id="priceFilter" placeholder="(DKK)" /></label>
-  </div>
-  <div class="product_list">
-    {data.map((element) => <ProductCard data={element} />)};
-  </div>
+  <main>
+    <h2 id="produktliste_titel">Apparel</h2>
+    <h3>FILTERS</h3>
+    <div class="filters">
+      <label>ITEMS ON SALE: <input type="checkbox" id="saleFilter" /> </label>
+      <label>MAX PRICE: <input type="number" id="priceFilter" placeholder="(DKK)" /></label>
+    </div>
+    <section class="product_list">
+      {data.map((element) => <ProductCard data={element} />)};
+    </section>
+  </main>
+  <Footer />
 </Layout>

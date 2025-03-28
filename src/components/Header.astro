@@ -1,19 +1,24 @@
+---
+const categories = await fetch("https://kea-alt-del.dk/t7/api/categories/").then((response) => response.json());
+---
+
 <header>
   <h1><a href="index.html" class="logo">FASHIONRUS</a></h1>
   <div class="header_menu">
     <label for="menu-toggle" class="menu-trigger">CATEGORIES+</label>
   </div>
-
   <input type="checkbox" id="menu-toggle" class="menu-checkbox" />
-
-  <div class="fullscreen-menu">
+  <div id="fullscreen-menu" class="fullscreen-menu">
     <ul>
-      <!-- <li><a href="productlist.html">ACCESSORIES</a></li>
-        <li><a href="productlist.html">APPAREL</a></li>
-        <li><a href="productlist.html">FOOTWEAR</a></li>
-        <li><a href="productlist.html">FREE ITEMS</a></li>
-        <li><a href="productlist.html">PERSONAL CARE</a></li>
-        <li><a href="productlist.html">SPORTING GOODS</a></li> -->
+      {
+        categories.map((category) => (
+          <li>
+            <a href={`/productlist?category=${category.category}`} class="menu-link">
+              {category.category}
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </header>
